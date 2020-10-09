@@ -12,6 +12,8 @@ totalEmpHr=0
 totalWorkingDays=0
 
 
+declare -A  dailyWages # declare Dictionary here
+
 function getWorkingHours(){
 	case $1 in
                 $IS_FULL_TIME ) 
@@ -39,10 +41,10 @@ do
 	((totalWorkingDays++))
 	empHours=$( getWorkingHours $((RANDOM%3)) )
 	totalEmpHr=$(($totalEmpHr+$empHours))
-	dailyWages[$totalWorkingDays]=$( getEmpWage $empHours )
+	dailyWages[$totalWorkingDays]=$( getEmpWage $empHours ) #for Adding Dictionary here
 done
 totalSalary=$(($EMP_RATE_PER_HOUR*$totalEmpHr))
 
 echo "Total Salary Is " $totalSalary
-
 echo "Daily Wages : " ${dailyWages[@]}
+echo "Daily Index : " ${!dailyWages[@]}
