@@ -1,15 +1,15 @@
 #! /bin/bash -x 
 
-is_Present=1
+isPresent=1
 randomCheck=$((RANDOM%2))
 
-if [ $randomCheck -eq $is_Present ]
+if [ $randomCheck -eq $isPresent ]
 then
-
-        echo "Employee Is Present"
-
+        empRatePerHour=20
+        empHrs=8
+        salary=$(($empRatePerHour*$empHrs))
 else
-
-        echo "Employee Is Absent"
-
+        salary=0
 fi
+
+echo "Your One Day Salary Is : " $salary
